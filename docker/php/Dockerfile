@@ -1,6 +1,7 @@
 FROM dunglas/frankenphp:1-php8.3-alpine
 
 RUN apk add --no-cache \
+    dos2unix \
     git \
     zip \
     unzip \
@@ -22,7 +23,8 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 WORKDIR /var/www/html
 
 COPY docker/php/init.sh /usr/local/bin/init.sh
-RUN chmod +x /usr/local/bin/init.sh
+RUN dos2unix /usr/local/bin/init.sh && \
+    chmod +x /usr/local/bin/init.sh
 
 ENTRYPOINT ["/usr/local/bin/init.sh"]
 
