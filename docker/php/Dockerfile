@@ -29,5 +29,3 @@ RUN dos2unix /usr/local/bin/init.sh && \
 ENTRYPOINT ["/usr/local/bin/init.sh"]
 
 EXPOSE 80
-
-CMD ["php", "artisan", "octane:start", "--server=frankenphp", "--host=0.0.0.0", "--port=80", "--admin-port=2019"]
