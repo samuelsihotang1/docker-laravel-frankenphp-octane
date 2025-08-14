@@ -14,11 +14,6 @@ if [ ! -f "$SETUP_LOCK_FILE" ]; then
         composer create-project laravel/laravel .
     fi
 
-    cp .env.example .env
-    php artisan key:generate
-
-    composer install --optimize-autoloader --no-interaction
-
     composer require laravel/octane --no-interaction
     php artisan octane:install --server=frankenphp
 
